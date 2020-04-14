@@ -1,4 +1,4 @@
-# coding=utf8
+# coding=utf-8
 import pymysql.cursors
 from os.path import abspath, dirname
 import configparser as cparser
@@ -51,7 +51,7 @@ class DB:
         key   = ','.join(table_data.keys())
         value = ','.join(table_data.values())
         real_sql = "INSERT INTO " + table_name + " (" + key + ") VALUES (" + value + ")"
-        #print(real_sql)
+        print(real_sql)
 
         with self.connection.cursor() as cursor:
             cursor.execute(real_sql)
@@ -81,4 +81,6 @@ if __name__ == '__main__':
 
     db.clear(table_name)
     db.insert(table_name, data)
+    # db.clear(table_name2)
+    # db.insert(table_name2, data2)
     db.close()
