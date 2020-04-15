@@ -77,7 +77,7 @@ if __name__ == '__main__':
     table_name = "sign_event"
     data = {'id':1,'name':'红米','`limit`':2000,'status':1,'address':'北京会展中心','start_time':'2016-08-20 00:25:42'}
     table_name2 = "sign_guest"
-    data2 = {'realname':'alen','phone':12312341234,'email':'alen@mail.com','sign':0,'event_id':1}
+    data2 = {'id':1,'realname':'alen','phone':12312341234,'email':'alen@mail.com','sign':0,'event_id':1}
 
     db.clear(table_name)
     db.insert(table_name, data)
