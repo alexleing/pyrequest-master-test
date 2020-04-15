@@ -2,8 +2,13 @@
 import pymysql.cursors
 from os.path import abspath, dirname
 import configparser as cparser
+import logging
 
-
+LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"    # 日志格式化输出
+DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"                        # 日期格式
+fp = logging.FileHandler('log_info.txt', encoding='utf-8')   # 将日志记录到文件中
+fs = logging.StreamHandler()
+logging.basicConfig(level=logging.DEBUG, format=LOG_FORMAT, datefmt=DATE_FORMAT, handlers=[fp, fs])
 # ======== Reading db_config.ini setting ===========
 base_dir = dirname(dirname(abspath(__file__)))
 base_dir = base_dir.replace('\\', '/')
@@ -32,8 +37,11 @@ class DB:
                                               db=db,
                                               charset='utf8mb4',
                                               cursorclass=pymysql.cursors.DictCursor)
+            logging.debug('pymysql操作目前正确')
+            logging.info('操作正确')
         except pymysql.err.OperationalError as e:
             print("Mysql Error %d: %s" % (e.args[0], e.args[1]))
+            logging.info('操作错误')
 
     # clear table data
     def clear(self, table_name):
@@ -52,6 +60,7 @@ class DB:
         value = ','.join(table_data.values())
         real_sql = "INSERT INTO " + table_name + " (" + key + ") VALUES (" + value + ")"
         print(real_sql)
+        logging.info(real_sql)
 
         with self.connection.cursor() as cursor:
             cursor.execute(real_sql)
@@ -78,7 +87,6 @@ if __name__ == '__main__':
     data = {'id':1,'name':'红米','`limit`':2000,'status':1,'address':'北京会展中心','start_time':'2016-08-20 00:25:42'}
     table_name2 = "sign_guest"
     data2 = {'id':1,'realname':'alen','phone':12312341234,'email':'alen@mail.com','sign':0,'event_id':1}
-
     db.clear(table_name)
     db.insert(table_name, data)
     db.clear(table_name2)
