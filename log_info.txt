@@ -1,0 +1,4 @@
+04/15/2020 17:49:26 PM - DEBUG - pymysql操作目前正确
+04/15/2020 17:49:26 PM - INFO - 操作正确
+04/15/2020 17:49:26 PM - INFO - INSERT INTO sign_event (id,name,`limit`,status,address,start_time) VALUES ('1','红米','2000','1','北京会展中心','2016-08-20 00:25:42')
+04/15/2020 17:49:26 PM - INFO - INSERT INTO sign_guest (id,realname,phone,email,sign,event_id) VALUES ('1','alen','12312341234','alen@mail.com','0','1')
