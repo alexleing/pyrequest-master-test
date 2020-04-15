@@ -81,6 +81,6 @@ if __name__ == '__main__':
 
     db.clear(table_name)
     db.insert(table_name, data)
-    # db.clear(table_name2)
-    # db.insert(table_name2, data2)
+    db.clear(table_name2)
+    db.insert(table_name2, data2)
     db.close()
