@@ -6,8 +6,8 @@ for i in range(1, 1000):
     real_name = "alex" + str_i
     phone = 1780000000 + i
     email = "alex" + str_i +"@mail.com"
-    sql = 'INSERT INTO sign_guest (real_name, phone, email, sign, event_id) VALUES ' \
-          '("'+real_name+'", '+str(phone)+', "'+email+'", 0, 1);'
+    sql = 'INSERT INTO sign_guest (id,real_name, phone, email, sign, event_id) VALUES ' \
+          '('+str_i+',"'+real_name+'", '+str(phone)+', "'+email+'", 0, 1);'
     f.write(sql)
     f.write("\n")
 
